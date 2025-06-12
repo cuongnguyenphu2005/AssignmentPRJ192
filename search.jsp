@@ -35,7 +35,7 @@
                             <th>No.</th>
                             <th>Username</th>
                             <th>Password</th>
-                            <th>Full name</th>
+                            <th>Last name</th>
                             <th>Role</th>
                         </tr>
                     </thead>
@@ -55,7 +55,7 @@
                                 <%= dto.getPassword() %>
                             </td>
                             <td>
-                                <%= dto.getFullName() %>
+                                <%= dto.getLastName() %>
                             </td>
                             <td>
                                 <%= dto.isIsAdmin() %>

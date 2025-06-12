@@ -13,13 +13,13 @@ import java.io.Serializable;
 public class RegistrationDTO implements Serializable{
     private String username;
     private String password;
-    private String fullName;
+    private String lastName;
     private boolean isAdmin;
 
-    public RegistrationDTO(String username, String password, String fullName, boolean isAdmin) {
+    public RegistrationDTO(String username, String password, String lastName, boolean isAdmin) {
         this.username = username;
         this.password = password;
-        this.fullName = fullName;
+        this.lastName = lastName;
         this.isAdmin = isAdmin;
     }
 
@@ -42,12 +42,12 @@ public class RegistrationDTO implements Serializable{
         this.password = password;
     }
 
-    public String getFullName() {
-        return fullName;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setFullName(String lastName) {
-        this.fullName = lastName;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public boolean isIsAdmin() {

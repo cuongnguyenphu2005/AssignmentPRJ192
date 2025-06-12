@@ -152,9 +152,9 @@ public class RegistrationDAO implements Serializable {
                 //2.1. Create SQL String
                 //khi viet cau lenh SQL thi moi cau lenh phai duoc viet treb 1 dong, moi
                 //khi xuong dong phai chen them 1 khoang trang truoc khi xuong dong
-                String sql = "Select username, password, fullname, isAdmin "
+                String sql = "Select username, password, lastname, isAdmin "
                         + "From Registration "
-                        + "Where fullname Like ?";
+                        + "Where lastname Like ?";
 
                 //2.2. Create Statement Object
                 //co bao nhieu dua cham hoi la set het bay nhieu
@@ -167,10 +167,10 @@ public class RegistrationDAO implements Serializable {
                 while (rs.next()) {
                     String username = rs.getString("username");
                     String password = rs.getString("password");
-                    String fullName = rs.getString("fullname");
+                    String lastname = rs.getString("lastname");
                     boolean role = rs.getBoolean("isAdmin");
 
-                    RegistrationDTO dto = new RegistrationDTO(username, password, fullName, role);
+                    RegistrationDTO dto = new RegistrationDTO(username, password, lastname, role);
                     //set
                     if (this.accounts == null) {
                         this.accounts = new ArrayList<>();
