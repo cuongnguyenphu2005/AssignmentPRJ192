@@ -15,7 +15,7 @@
     </head>
     <body>
         <h1>Search Page</h1>
-        <form action="ProgressServlet" method="GET">
+        <form action="SearchLastNameServlet" method="GET">
             Search <input type="text" name="txtSearchname" 
                           value="<%= request.getParameter("txtSearchname") %>" /><br/>
             <input type="submit" value="Search" name="btAction" />
