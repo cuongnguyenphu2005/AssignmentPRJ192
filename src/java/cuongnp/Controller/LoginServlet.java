@@ -16,7 +16,6 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import static org.apache.tomcat.jni.User.username;
 
 /**
  *
@@ -24,7 +23,6 @@ import static org.apache.tomcat.jni.User.username;
  */
 public class LoginServlet extends HttpServlet {
 
-    private final String ADMIN_HOME_PAGE = "adminhome.html";
     private final String INVALID_PAGE = "invalid.html";
     private final String SEARCH_PAGE = "search.jsp";
 
@@ -41,7 +39,6 @@ public class LoginServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter(); // Phai lay ra vi de trong try la finally
-//        RegistrationDTO result = dao.checkLogin(username, password);
 
         //1. get all user info (parameter)
         String button = request.getParameter("btAction");
@@ -49,37 +46,25 @@ public class LoginServlet extends HttpServlet {
         String username = request.getParameter("txtUsername");
         String password = request.getParameter("txtPassword");
         try {
-            
+
             //de nhan dang nut gi
             //qua login.html copy qua o value
-                //de user voi pass trong day de tiet kiem dung luong
-                
+            //de user voi pass trong day de tiet kiem dung luong
+            //2. Controller calls methods
+            //2.1 New DAO Object
+            RegistrationDAO dao = new RegistrationDAO();
+            //kiem tra xem co san chua, co r thi xai, chua co thi tao
+            //2.2  call method of DAO object
+            RegistrationDTO result = dao.checkLogin(username, password);
+            if (result != null) {
+                HttpSession session = request.getSession(); // phai tao nen phai true
+                session.setAttribute("USER_INFO", result);
+                url = SEARCH_PAGE;
 
-                //2. Controller calls methods
-                //2.1 New DAO Object
-                RegistrationDAO dao = new RegistrationDAO();
-                //kiem tra xem co san chua, co r thi xai, chua co thi tao
-                //2.2  call method of DAO object
-                RegistrationDTO result = dao.checkLogin(username, password);
-//                if (result) {
-//                    url = ADMIN_HOME_PAGE;
-//                } else {
-//                    result = dao.checkLogin(username, password);
-//                    if (result) {
-//                        
-//                    }
-//                }
-    if (result != null){
-        HttpSession session = request.getSession(); // phai tao nen phai true
-        session.setAttribute("USER_INFO", result);
-        url = SEARCH_PAGE;
-        
-        
-    }
-                //3.  Process result
+            }
+            //3.  Process result
 
             //user clicked Login button, format F lai
-            
         } catch (SQLException ex) {
             log("LoginServlet_SQLException: " + ex.getMessage());
             response.sendRedirect(INVALID_PAGE);
@@ -89,7 +74,7 @@ public class LoginServlet extends HttpServlet {
         } finally {// de het loi
 //            response.sendRedirect(url); //lo url
             RequestDispatcher rd = request.getRequestDispatcher(url);
-            rd.forward (request,response);
+            rd.forward(request, response);
             out.close();
         }
     }
