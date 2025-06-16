@@ -41,27 +41,25 @@ public class RegistrationDAO implements Serializable {
 //        boolean result = false;
         RegistrationDTO result = null;
 
-        
         Connection con = null;
         PreparedStatement stm = null;
         ResultSet rs = null;
 
         //khai bao dau tien thi dong cuoi cung
         try {//se bi loi SQL. 
-            
+
             //phai check connection khac null
             //kiem tra connection mo chua:
             //viet thu vien tao 1 lan xai nhieu lan, vi moi class khac deu xai
             //cac class heople
-           
             // 1.model connect database
             con = DBHelper.makeConnection(); //Goi them loi do goi DBHelper
-           
+
             //moi menh de cua SQL phai duoc viet tren 1 dong
             // phai chen them 1 khoang trang truoc khi xuong dong
             if (con != null) {
-                 // 2. model query DB;
-                  //2.1 tao cac cau lenh SQL Create 
+                // 2. model query DB;
+                //2.1 tao cac cau lenh SQL Create 
                 String sql = "Select lastname, isAdmin "
                         + "From Registration "
                         + "Where username = ? "
@@ -82,9 +80,9 @@ public class RegistrationDAO implements Serializable {
                 //
                 if (rs.next()) {//
 //                    result = true;
-                   String lastname = rs.getString("lastname");
-                   boolean role = rs.getBoolean("isAdmin");
-                   result = new RegistrationDTO(username, null, lastname, role);
+                    String lastname = rs.getString("lastname");
+                    boolean role = rs.getBoolean("isAdmin");
+                    result = new RegistrationDTO(username, null, lastname, role);
                 }
             }//connection is an available
 
@@ -104,49 +102,6 @@ public class RegistrationDAO implements Serializable {
         //
     }
 
-/*    public boolean checkAdminLogin(String adminname, String passpin)
-            throws SQLException, ClassNotFoundException {
-        boolean result = false;
-        //1. Model connect database
-        Connection con = null;
-        PreparedStatement stm = null;
-        ResultSet rs = null;
-        try {
-            //2. Model query database
-            con = DBHelper.makeConnection();
-            //2.1 Create SQL code script
-            if (con != null) {
-                String sql = "SELECT username "
-                        + "FROM Registration "
-                        + "WHERE username = ? "
-                        + "AND password = ? "
-                        + "AND isAdmin = ?";
-                //2.2 Create statement object
-                stm = con.prepareStatement(sql);
-                stm.setString(1, adminname);
-                stm.setString(2, passpin);
-                stm.setString(3, "true");
-                //2.3 Excute query
-                rs = stm.executeQuery();
-                //3. Model gets data from DB, then Model sets data to properties of Model
-                if (rs.next()) {
-                    result = true;
-                }
-            }
-        } finally {
-            if (rs != null) {
-                rs.close();
-            }
-            if (stm != null) {
-                stm.close();
-            }
-            if (con != null) {
-                con.close();
-            }
-        }
-        return result;
-    }
-*/
     public void searchLastName(String searchValue) throws SQLException, ClassNotFoundException {
 
         Connection con = null;
