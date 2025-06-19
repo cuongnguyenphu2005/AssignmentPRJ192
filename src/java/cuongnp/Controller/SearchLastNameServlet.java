@@ -24,14 +24,16 @@ import java.util.List;
 @WebServlet(name = "SearchLastNameServlet", urlPatterns = {"/SearchLastNameServlet"})
 public class SearchLastNameServlet extends HttpServlet {
 
-    private final String SEARCH_PAGE = "search.html";
+//    private final String SEARCH_PAGE = "search.html";
+  private final String SEARCH_PAGE = "search.jsp";
+    
     private final String SEARCH_RESULT = "search.jsp";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         //1. getall user's information
-        String searchValue = request.getParameter("txtSearchname"); //gia tri tim kiem
+        String searchValue = request.getParameter("txtSearchValue"); //gia tri tim kiem
         String url = SEARCH_PAGE;
         try {
             if (!searchValue.trim().isEmpty()) {

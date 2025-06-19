@@ -4,9 +4,11 @@
     Author     : Cuong
 --%>
 
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="java.util.List" %>
-<%@page import="cuongnp.registration.RegistrationDTO" %>
+<%@taglib uri ="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%--<%@page import="java.util.List" %>
+<%@page import="cuongnp.registration.RegistrationDTO" %>--%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -20,13 +22,60 @@
 
     <h1>Search Page</h1>
     <form action="SearchLastNameServlet" method="GET">
-        Search <input type="text" name="txtSearchname" 
-                      value="<%= request.getParameter("txtSearchname") %>" /><br/>
+        Search <input type="text" name="txtSearchValue" 
+                      value="${param.txtSearchValue}" /><br/>
         <input type="submit" value="Search" name="btAction" />
-    </form>
-    <%
+    </form><br/>
+    <%--gan, set attribute--%>
+    <c:set var="searchValue" value ="${param.txtSearchValue}" />
+    <c:if test="${not empty searchValue}">
+        <c:set var ="result" value ="${requestScope.SEARCH_RESULT}"/>
+        <c:if test="${not empty result}">
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>Username</th>
+                        <th>Password</th>
+                        <th>Full name</th>
+                        <th>Role</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <c:forEach var="dto" items="${result}" varStatus="counter">
+                        <tr>
+                            <td>
+                                ${counter.count}
+                            .</td>
+                            <td>
+                                ${dto.username}
+                            </td>
+                            <td>
+                                ${dto.password}
+                            </td>
+                            <td>
+                                ${dto.lastName}
+                            </td>
+                            <td>
+                                ${dto.isAdmin}
+                            </td>
+                        </tr>
+                    </c:forEach>
+                </tbody>
+            </table>
+
+        </c:if>
+        <c:if test="${empty result}">
+            <h2>
+                <font color ="red">
+                No record is matched!!!
+                </font>
+            </h2>
+        </c:if>
+    </c:if>
+    <%--<%
     //service() -->_jspService()
-    String searchValue = request.getParameter("txtSearchname");
+    String searchValue = request.getParameter("txtSearchValue");
     if (searchValue != null){
         //dang dat o attribute cua request scope.
         //kieu du lieu list<RegistrationDTO>
@@ -82,7 +131,7 @@
     <%
         }
     }//having request parameters
-    %>
+    %>--%>
 </body>
 </html>
 <!-- comment -->

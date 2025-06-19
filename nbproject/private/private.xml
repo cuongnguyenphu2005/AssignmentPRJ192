@@ -13,11 +13,13 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group name="Group 20241103-12:32:56">
             <file>file:/E:/Code/slot2PRJ/MVC2SE1819/web/login.html</file>
-            <file>file:/E:/Code/slot2PRJ/MVC2SE1819/src/java/cuongnp/Controller/SearchLastNameServlet.java</file>
-            <file>file:/E:/Code/slot2PRJ/MVC2SE1819/src/java/cuongnp/registration/RegistrationDTO.java</file>
-            <file>file:/E:/Code/slot2PRJ/MVC2SE1819/src/java/cuongnp/Controller/DispatchServlet.java</file>
-            <file>file:/E:/Code/slot2PRJ/MVC2SE1819/src/java/cuongnp/Controller/LoginServlet.java</file>
+            <file>file:/E:/Code/slot2PRJ/MVC2SE1819/web/invalid.html</file>
             <file>file:/E:/Code/slot2PRJ/MVC2SE1819/src/java/cuongnp/registration/RegistrationDAO.java</file>
+            <file>file:/E:/Code/slot2PRJ/MVC2SE1819/src/java/cuongnp/controller/SearchLastNameServlet.java</file>
+            <file>file:/E:/Code/slot2PRJ/MVC2SE1819/web/search.html</file>
+            <file>file:/E:/Code/slot2PRJ/MVC2SE1819/web/search.jsp</file>
+            <file>file:/E:/Code/slot2PRJ/MVC2SE1819/src/java/cuongnp/controller/LoginServlet.java</file>
+            <file>file:/E:/Code/slot2PRJ/MVC2SE1819/src/java/cuongnp/controller/DispatchServlet.java</file>
         </group>
     </open-files>
 </project-private>
