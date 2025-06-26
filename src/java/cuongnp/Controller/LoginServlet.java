@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package cuongnp.Controller;
+package cuongnp.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -12,6 +12,7 @@ import cuongnp.registration.RegistrationDAO;
 import cuongnp.registration.RegistrationDTO;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -60,7 +61,10 @@ public class LoginServlet extends HttpServlet {
                 HttpSession session = request.getSession(); // phai tao nen phai true
                 session.setAttribute("USER_INFO", result);
                 url = SEARCH_PAGE;
-
+                //write
+                Cookie cookie = new Cookie(username, password);
+                cookie.setMaxAge(60*3);
+                response.addCookie(cookie);
             }
             //3.  Process result
 

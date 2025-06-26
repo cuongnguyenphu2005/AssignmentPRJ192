@@ -39,86 +39,112 @@
                         <th>Password</th>
                         <th>Full name</th>
                         <th>Role</th>
+                        <th>Delete</th>
+                        <th>Update</th>
                     </tr>
                 </thead>
                 <tbody>
                     <c:forEach var="dto" items="${result}" varStatus="counter">
+                    <form action="DispatchServlet" method="POST">
                         <tr>
                             <td>
                                 ${counter.count}
-                            .</td>
+                                .</td>
                             <td>
                                 ${dto.username}
+                                <input type="hidden" name="txtUsername" 
+                                       value="${dto.username}" />
                             </td>
                             <td>
-                                ${dto.password}
+                                <input type="text" name="txtPassword" 
+                                       value="${dto.password}" />
                             </td>
                             <td>
                                 ${dto.lastName}
                             </td>
                             <td>
-                                ${dto.isAdmin}
+                                <input type="checkbox" name="chkAdmin" value="ON" 
+                                       <c:if test= "${dto.isAdmin}">
+                                           checked="checked"
+                                       </c:if>
+                                       />
+
+                            </td>
+                            <td>
+                                <c:url var="deleteLink" value="DispatchServlet">
+                                    <c:param name="btAction" value="delete"/>
+                                    <c:param name="pk" value="${dto.username}"/>
+                                    <c:param name="lastSearchValue" 
+                                             value="${param.txtSearchValue}"/>
+                                </c:url>
+                                <a href="${deleteLink}">Delete</a>
+                            </td>
+                            <td>
+                                <input type="submit" value="Update" name="btAction" />
+                                <input type="hidden" name="lastSearchValue" 
+                                       value="${searchValue}" />
                             </td>
                         </tr>
-                    </c:forEach>
-                </tbody>
-            </table>
+                    </form>
+                </c:forEach>
+            </tbody>
+        </table>
 
-        </c:if>
-        <c:if test="${empty result}">
-            <h2>
-                <font color ="red">
-                No record is matched!!!
-                </font>
-            </h2>
-        </c:if>
     </c:if>
-    <%--<%
-    //service() -->_jspService()
-    String searchValue = request.getParameter("txtSearchValue");
-    if (searchValue != null){
-        //dang dat o attribute cua request scope.
-        //kieu du lieu list<RegistrationDTO>
-        List<RegistrationDTO> result = (List<RegistrationDTO>)request.getAttribute("SEARCH_RESULT");
-        if(result != null){//found
-    %>
-    <table border="1">
-        <thead>
-            <tr>
-                <th>No.</th>
-                <th>Username</th>
-                <th>Password</th>
-                <th>Last name</th>
-                <th>Role</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% 
-                int count = 0;
-                for (RegistrationDTO dto : result){
-            %>
-            <tr>
-                <td>
-                    <%= ++count %>.
-                </td>
-                <td>
-                    <%= dto.getUsername() %>
-                </td>
-                <td>
-                    <%= dto.getPassword() %>
-                </td>
-                <td>
-                    <%= dto.getLastName() %>
-                </td>
-                <td>
-                    <%= dto.isIsAdmin() %>
-                </td>
-            </tr>
-            <%
-                }//traverse dto in result
-            %>
-        </tbody>
-    </table>
+    <c:if test="${empty result}">
+        <h2>
+            <font color ="red">
+            No record is matched!!!
+            </font>
+        </h2>
+    </c:if>
+</c:if>
+<%--<%
+//service() -->_jspService()
+String searchValue = request.getParameter("txtSearchValue");
+if (searchValue != null){
+    //dang dat o attribute cua request scope.
+    //kieu du lieu list<RegistrationDTO>
+    List<RegistrationDTO> result = (List<RegistrationDTO>)request.getAttribute("SEARCH_RESULT");
+    if(result != null){//found
+%>
+<table border="1">
+    <thead>
+        <tr>
+            <th>No.</th>
+            <th>Username</th>
+            <th>Password</th>
+            <th>Last name</th>
+            <th>Role</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% 
+            int count = 0;
+            for (RegistrationDTO dto : result){
+        %>
+        <tr>
+            <td>
+                <%= ++count %>.
+            </td>
+            <td>
+                <%= dto.getUsername() %>
+            </td>
+            <td>
+                <%= dto.getPassword() %>
+            </td>
+            <td>
+                <%= dto.getLastName() %>
+            </td>
+            <td>
+                <%= dto.isIsAdmin() %>
+            </td>
+        </tr>
+        <%
+            }//traverse dto in result
+        %>
+    </tbody>
+</table>
 
     <%
         }else { //not found 

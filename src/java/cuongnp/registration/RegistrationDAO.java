@@ -156,4 +156,63 @@ public class RegistrationDAO implements Serializable {
         }
     }
 
+    public boolean deleteAccount(String username)
+            throws SQLException, ClassNotFoundException {
+        //tuan thu luat thiet ke, 1 input , 1 output
+        boolean result = false;
+
+        Connection con = null;
+        PreparedStatement stm = null;
+        ResultSet rs = null;
+
+        //khai bao dau tien thi dong cuoi cung
+        try {//se bi loi SQL. 
+
+            //phai check connection khac null
+            //kiem tra connection mo chua:
+            //viet thu vien tao 1 lan xai nhieu lan, vi moi class khac deu xai
+            //cac class heople
+            // 1.model connect database
+            con = DBHelper.makeConnection(); //Goi them loi do goi DBHelper
+
+            //moi menh de cua SQL phai duoc viet tren 1 dong
+            // phai chen them 1 khoang trang truoc khi xuong dong
+            if (con != null) {
+                // 2. model query DB;
+                //2.1 tao cac cau lenh SQL Create 
+                String sql = "DELETE FROM Registration "
+                        + "WHERE username = ? "; //bi loi syntax from need
+                // phai xuong database copy, neu ko sai thi objectnotfound
+
+                //2.2 Create Statement Object la buoc de nap cau lenh voa ben trong Project (to khoi (to den ))
+                stm = con.prepareStatement(sql); // doi tuong connection nen phai check null
+                stm.setString(1, username);
+                //co bao nhieu tham so (?) thi phai set het bay nhieu
+
+                //2.3 Excute Query 
+                int effectRow = stm.executeUpdate();
+
+                //3. Check effectRow
+                //then model sets data to properties of Model
+                if (effectRow > 0) {
+                    result = true;
+                } //ket qua tra ve ko bao gio la am, 0 thi khong hop le
+
+            }//connection is an available
+
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (stm != null) {
+                stm.close();
+            }
+            if (con != null) {
+                con.close();
+
+            }
+        }
+        return result; //tra ve kieu int, so dong hieu luc 
+    }
 }
+    

@@ -15,8 +15,12 @@
             <file>file:/E:/Code/slot2PRJ/MVC2SE1819/src/java/cuongnp/controller/DispatchServlet.java</file>
             <file>file:/E:/Code/slot2PRJ/MVC2SE1819/src/java/cuongnp/controller/SearchLastNameServlet.java</file>
             <file>file:/E:/Code/slot2PRJ/MVC2SE1819/web/search.jsp</file>
-            <file>file:/E:/Code/slot2PRJ/MVC2SE1819/src/java/cuongnp/registration/RegistrationDTO.java</file>
+            <file>file:/E:/Code/slot2PRJ/MVC2SE1819/src/java/cuongnp/controller/CheckAccountServlet.java</file>
+            <file>file:/E:/Code/slot2PRJ/MVC2SE1819/web/search.html</file>
             <file>file:/E:/Code/slot2PRJ/MVC2SE1819/src/java/cuongnp/controller/LoginServlet.java</file>
+            <file>file:/E:/Code/slot2PRJ/MVC2SE1819/web/error.html</file>
+            <file>file:/E:/Code/slot2PRJ/MVC2SE1819/src/java/cuongnp/registration/RegistrationDAO.java</file>
+            <file>file:/E:/Code/slot2PRJ/MVC2SE1819/src/java/cuongnp/controller/DeleteAccountServlet.java</file>
         </group>
     </open-files>
 </project-private>

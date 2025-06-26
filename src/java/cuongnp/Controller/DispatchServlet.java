@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
 
-package cuongnp.Controller;
+package cuongnp.controller;
 
 import jakarta.servlet.RequestDispatcher;
 import java.io.IOException;
@@ -26,7 +26,11 @@ public class DispatchServlet extends HttpServlet {
    private final String LOGIN_PAGE = "login.html";
 //   private final String SEARCH_PAGE = "search.html";
    private final String LOGIN_CONTROLLER ="LoginServlet";
+   
    private final String SEARCH_LASTNAME_CONTROLLER ="SearchLastNameServlet";
+   
+   private final String DELETE_ACCOUNT_CONTROLLER ="DeleteAccountServlet";
+   private final String CHECK_ACCOUNT_CONTROLLER ="CheckAccountServlet";
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -43,8 +47,8 @@ public class DispatchServlet extends HttpServlet {
         String url = LOGIN_PAGE;
         try  {
             
-            if (button == null){
-                
+            if (button == null){ //first request
+                url = CHECK_ACCOUNT_CONTROLLER;
             }else {
                 switch (button){
                     case "Login":
@@ -52,6 +56,9 @@ public class DispatchServlet extends HttpServlet {
                         break;
                     case "Search":
                         url = SEARCH_LASTNAME_CONTROLLER;
+                        break;
+                    case "Delete":
+                        url = DELETE_ACCOUNT_CONTROLLER;
                         break;
                     default:
                         //do nothing
