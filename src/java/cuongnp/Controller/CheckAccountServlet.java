@@ -24,7 +24,7 @@ import java.sql.SQLException;
 public class CheckAccountServlet extends HttpServlet {
 
     private final String LOGIN_PAGE = "login.html";
-    private final String SEARCH_PAGE = "login.jsp";
+    private final String SEARCH_PAGE = "search.jsp";
     
 
     /**

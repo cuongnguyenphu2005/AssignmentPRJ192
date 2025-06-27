@@ -69,12 +69,10 @@ public class LoginServlet extends HttpServlet {
             //3.  Process result
 
             //user clicked Login button, format F lai
-        } catch (SQLException ex) {
-            log("LoginServlet_SQLException: " + ex.getMessage());
-            response.sendRedirect(INVALID_PAGE);
-        } catch (ClassNotFoundException ex) {
-            log("LoginServlet_ClassNotFoundException: " + ex.getMessage());
-            response.sendRedirect(INVALID_PAGE);
+        } catch (SQLException ex){
+            log ("SQL: " + ex.getMessage());
+        }catch (ClassNotFoundException ex){
+            log ("ClassNotFoundException "+ ex.getMessage());
         } finally {// de het loi
 //            response.sendRedirect(url); //lo url
             RequestDispatcher rd = request.getRequestDispatcher(url);
