@@ -12,7 +12,6 @@ import cuongnp.registration.RegistrationDAO;
 import cuongnp.registration.RegistrationDTO;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -61,18 +60,17 @@ public class LoginServlet extends HttpServlet {
                 HttpSession session = request.getSession(); // phai tao nen phai true
                 session.setAttribute("USER_INFO", result);
                 url = SEARCH_PAGE;
-                //write
-                Cookie cookie = new Cookie(username, password);
-                cookie.setMaxAge(60*3);
-                response.addCookie(cookie);
+
             }
             //3.  Process result
 
             //user clicked Login button, format F lai
-        } catch (SQLException ex){
-            log ("SQL: " + ex.getMessage());
-        }catch (ClassNotFoundException ex){
-            log ("ClassNotFoundException "+ ex.getMessage());
+        } catch (SQLException ex) {
+            log("LoginServlet_SQLException: " + ex.getMessage());
+            response.sendRedirect(INVALID_PAGE);
+        } catch (ClassNotFoundException ex) {
+            log("LoginServlet_ClassNotFoundException: " + ex.getMessage());
+            response.sendRedirect(INVALID_PAGE);
         } finally {// de het loi
 //            response.sendRedirect(url); //lo url
             RequestDispatcher rd = request.getRequestDispatcher(url);

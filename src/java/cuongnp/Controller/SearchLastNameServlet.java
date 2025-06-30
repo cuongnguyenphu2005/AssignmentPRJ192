@@ -57,11 +57,11 @@ public class SearchLastNameServlet extends HttpServlet {
                 
 
             }
-//phai catch boi vi 1 so phuong thuc class khong duoc chinh sua vi no la signature
-        } catch (SQLException ex){
-            log ("SQL: " + ex.getMessage());
-        }catch (ClassNotFoundException ex){
-            log ("ClassNotFoundException "+ ex.getMessage());
+
+        } catch (ClassNotFoundException ex) { //phai catch boi vi 1 so phuong thuc class khong duoc chinh sua vi no la signature
+            ex.printStackTrace();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
         } finally {
             //minh phai giu lai para de hien thi gia tri tim kiem, tranh co che stateless.
             RequestDispatcher rd = request.getRequestDispatcher(url);

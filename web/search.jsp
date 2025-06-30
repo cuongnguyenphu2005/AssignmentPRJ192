@@ -75,7 +75,7 @@
                             </td>
                             <td>
                                 <c:url var="deleteLink" value="DispatchServlet">
-                                    <c:param name="btAction" value="delete"/>
+                                    <c:param name="btAction" value="Delete"/>
                                     <c:param name="pk" value="${dto.username}"/>
                                     <c:param name="lastSearchValue" 
                                              value="${param.txtSearchValue}"/>

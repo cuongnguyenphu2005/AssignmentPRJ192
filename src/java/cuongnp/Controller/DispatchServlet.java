@@ -28,10 +28,9 @@ public class DispatchServlet extends HttpServlet {
    private final String LOGIN_CONTROLLER ="LoginServlet";
    
    private final String SEARCH_LASTNAME_CONTROLLER ="SearchLastNameServlet";
-   
    private final String DELETE_ACCOUNT_CONTROLLER ="DeleteAccountServlet";
-   private final String CHECK_ACCOUNT_CONTROLLER ="CheckAccountServlet";
-   private final String LOGOUT_ACCOUNT_CONTROLLER = "LogoutServlet";
+   private final String REGISTER_ACCOUNT_CONTROLLER ="CreateAccountSevlet";
+   
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -48,8 +47,8 @@ public class DispatchServlet extends HttpServlet {
         String url = LOGIN_PAGE;
         try  {
             
-            if (button == null){ //first request
-                url = CHECK_ACCOUNT_CONTROLLER;
+            if (button == null){
+                
             }else {
                 switch (button){
                     case "Login":
@@ -61,8 +60,8 @@ public class DispatchServlet extends HttpServlet {
                     case "Delete":
                         url = DELETE_ACCOUNT_CONTROLLER;
                         break;
-                    case "Logout":
-                        url = LOGOUT_ACCOUNT_CONTROLLER;
+                     case "Sign up":
+                        url = REGISTER_ACCOUNT_CONTROLLER;
                         break;
                     default:
                         //do nothing

@@ -214,5 +214,61 @@ public class RegistrationDAO implements Serializable {
         }
         return result; //tra ve kieu int, so dong hieu luc 
     }
+    
+    public boolean createAccount(RegistrationDTO account) //duoi table co bao nhieu cot thi dien vao, neu >2 thi phai tao(Xai) Object
+      throws SQLException, ClassNotFoundException {
+        //tuan thu luat thiet ke, 1 input , 1 output
+        boolean result = false;
+
+        Connection con = null;
+        PreparedStatement stm = null;
+        
+
+        //khai bao dau tien thi dong cuoi cung
+        try {
+            // 1.model connect database
+            con = DBHelper.makeConnection(); //Goi them loi do goi DBHelper
+
+            if (con != null) {
+                // 2. model query DB;
+                //2.1 tao cac cau lenh SQL Create 
+                String sql = "INSERT INTO Registration("
+                        + "username, password, lastname, isAdmin"
+                        + ") VALUES ("
+                        + "?, ?, ?, ?"
+                        + ")"; //bi loi syntax from need
+                // phai xuong database copy, neu ko sai thi objectnotfound
+                
+                //2.2 Create Statement Object la buoc de nap cau lenh voa ben trong Project (to khoi (to den ))
+                stm = con.prepareStatement(sql); // doi tuong connection nen phai check null
+                stm.setString(1, account.getUsername());
+                stm.setString(2, account.getPassword());
+                stm.setString(3, account.getLastName());
+                stm.setBoolean(4, account.isIsAdmin());
+                //co bao nhieu tham so (?) thi phai set het bay nhieu
+                
+                //2.3 Excute Query 
+                int effectRows = stm.executeUpdate();
+                //3. Check effectRow
+                if(effectRows > 0){
+                    result = true;
+                }
+                //then model sets data to properties of Model
+               
+
+            }//connection is an available
+
+        } finally {
+           
+            if (stm != null) {
+                stm.close();
+            }
+            if (con != null) {
+                con.close();
+
+            }
+        }
+        return result; //tra ve kieu int, so dong hieu luc 
+    }
 }
     

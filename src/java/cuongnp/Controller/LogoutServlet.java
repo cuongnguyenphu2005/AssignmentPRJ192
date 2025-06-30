@@ -5,12 +5,13 @@
 package cuongnp.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 /**
  *
@@ -32,8 +33,16 @@ public class LogoutServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String url = LOGIN_PAGE;
+        HttpSession session = request.getSession(false);
+        Cookie[] cookies = request.getCookies();
         try {
-            request.getParameter(url);
+            if(session!= null){
+                session.invalidate();
+            }
+            for (int i = 0; i<cookies.length; i ++){
+                cookies[i] = null;
+            }
+            
         } finally {
             response.sendRedirect(url);
         }
