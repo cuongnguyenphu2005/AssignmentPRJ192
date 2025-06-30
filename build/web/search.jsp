@@ -19,8 +19,11 @@
     <body>
         <font color =" red">Welcome, ${sessionScope.USER_INFO.lastName}</font>
     </body>
-
+    <form action="DispatchServlet" method="GET">
+        <input type="submit" value="Logout" name="btAction" />
+    </form>
     <h1>Search Page</h1>
+    
     <form action="SearchLastNameServlet" method="GET">
         Search <input type="text" name="txtSearchValue" 
                       value="${param.txtSearchValue}" /><br/>

@@ -31,6 +31,7 @@ public class DispatchServlet extends HttpServlet {
    
    private final String DELETE_ACCOUNT_CONTROLLER ="DeleteAccountServlet";
    private final String CHECK_ACCOUNT_CONTROLLER ="CheckAccountServlet";
+   private final String LOGOUT_ACCOUNT_CONTROLLER = "LogoutServlet";
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -59,6 +60,9 @@ public class DispatchServlet extends HttpServlet {
                         break;
                     case "Delete":
                         url = DELETE_ACCOUNT_CONTROLLER;
+                        break;
+                    case "Logout":
+                        url = LOGOUT_ACCOUNT_CONTROLLER;
                         break;
                     default:
                         //do nothing

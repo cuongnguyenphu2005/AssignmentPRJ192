@@ -181,7 +181,7 @@ public class RegistrationDAO implements Serializable {
                 // 2. model query DB;
                 //2.1 tao cac cau lenh SQL Create 
                 String sql = "DELETE FROM Registration "
-                        + "WHERE username = ? "; //bi loi syntax from need
+                        + "WHERE username = ?"; //bi loi syntax from need
                 // phai xuong database copy, neu ko sai thi objectnotfound
 
                 //2.2 Create Statement Object la buoc de nap cau lenh voa ben trong Project (to khoi (to den ))
