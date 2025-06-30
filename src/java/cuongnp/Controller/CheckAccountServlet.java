@@ -25,7 +25,6 @@ public class CheckAccountServlet extends HttpServlet {
 
     private final String LOGIN_PAGE = "login.html";
     private final String SEARCH_PAGE = "search.jsp";
-    
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,7 +38,7 @@ public class CheckAccountServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
+
         String url = LOGIN_PAGE;
         //1. Get all cookies
         Cookie[] cookies = request.getCookies();
@@ -54,21 +53,20 @@ public class CheckAccountServlet extends HttpServlet {
                 RegistrationDAO dao = new RegistrationDAO();
                 RegistrationDTO result = dao.checkLogin(username, password);
                 //2.3 Process
-                if(result!=null){
+                if (result != null) {
                     url = SEARCH_PAGE;
                     HttpSession session = request.getSession();
                     session.setAttribute("USER_INFO", result);
                 }//end user is existed
             }//not first time
-        }catch (SQLException ex){
-            log ("SQL: " + ex.getMessage());
-        }catch (ClassNotFoundException ex){
-            log ("ClassNotFoundException "+ ex.getMessage());
-        }
-            finally {
+        } catch (SQLException ex) {
+            log("SQL: " + ex.getMessage());
+        } catch (ClassNotFoundException ex) {
+            log("ClassNotFoundException " + ex.getMessage());
+        } finally {
             //fw vs sendRedirect are accpet
             response.sendRedirect(url);
-            
+
         }
     }
 

@@ -7,7 +7,6 @@ package cuongnp.controller;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -19,7 +18,9 @@ import jakarta.servlet.http.HttpSession;
  */
 @WebServlet(name = "LogoutServlet", urlPatterns = {"/LogoutServlet"})
 public class LogoutServlet extends HttpServlet {
+
     private final String LOGIN_PAGE = "login.html";
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -34,15 +35,12 @@ public class LogoutServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String url = LOGIN_PAGE;
         HttpSession session = request.getSession(false);
-        Cookie[] cookies = request.getCookies();
+
         try {
-            if(session!= null){
+            if (session != null) {
                 session.invalidate();
             }
-            for (int i = 0; i<cookies.length; i ++){
-                cookies[i] = null;
-            }
-            
+
         } finally {
             response.sendRedirect(url);
         }

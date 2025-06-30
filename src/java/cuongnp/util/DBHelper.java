@@ -17,8 +17,9 @@ public class DBHelper {//static de khoi phai new
     // JDBC API framwork hay thu vien tao 1 lan de ket noi truy van bat ki DBMS // vi sao?
     //viet code 1 lan va xai nhieu noi 
     //duoi .sql
+
     public static Connection makeConnection()
-    throws ClassNotFoundException, SQLException{ // loi chi xaut hien trong 2 truong hop cau lenh sai hoac duong dan sai
+            throws ClassNotFoundException, SQLException { // loi chi xaut hien trong 2 truong hop cau lenh sai hoac duong dan sai
         //Tinh 
         //1. Nen phai Load Driver de dong
         Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");//mo trong thu vien va go i chang

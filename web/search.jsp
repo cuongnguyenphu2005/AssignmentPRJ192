@@ -23,8 +23,8 @@
         <input type="submit" value="Logout" name="btAction" />
     </form>
     <h1>Search Page</h1>
-    
-    <form action="SearchLastNameServlet" method="GET">
+
+    <form action="DispatchServlet" method="GET">
         Search <input type="text" name="txtSearchValue" 
                       value="${param.txtSearchValue}" /><br/>
         <input type="submit" value="Search" name="btAction" />
@@ -83,9 +83,11 @@
                                 <a href="${deleteLink}">Delete</a>
                             </td>
                             <td>
+
                                 <input type="submit" value="Update" name="btAction" />
                                 <input type="hidden" name="lastSearchValue" 
                                        value="${searchValue}" />
+
                             </td>
                         </tr>
                     </form>

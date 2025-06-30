@@ -14,7 +14,7 @@
     </head>
     <body>
         <h1>Register</h1>
-        <form name="CreateAccountSevlet" method="POST">
+        <form name="DispatchServlet" method="POST">
             <c:set var = "errors" value ="${requestScope.CREATE_ERROR}"/>
 
             Username* <input type="text" name="txtUsername" 

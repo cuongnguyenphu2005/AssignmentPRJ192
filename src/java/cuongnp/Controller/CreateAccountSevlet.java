@@ -15,8 +15,6 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -24,7 +22,7 @@ import java.util.logging.Logger;
  */
 @WebServlet(name = "CreateAccountSevlet", urlPatterns = {"/CreateAccountSevlet"})
 public class CreateAccountSevlet extends HttpServlet {
-    
+
     private final String ERROR_PAGE = "createNewAccount.jsp";
     private final String LOGIN_PAGE = "login.html";
 
@@ -45,7 +43,7 @@ public class CreateAccountSevlet extends HttpServlet {
         String password = request.getParameter("txtPassword");
         String confirm = request.getParameter("txtConfirm");
         String fullname = request.getParameter("txtFullname");
-        
+
         RegistrationCreateError errors = new RegistrationCreateError();
         boolean foundErr = false; //flag chan error
         String url = ERROR_PAGE;
@@ -86,7 +84,7 @@ public class CreateAccountSevlet extends HttpServlet {
                         username, password, fullname, false);
                 boolean result = dao.createAccount(account);
                 //3. Process
-                if (result){
+                if (result) {
                     url = LOGIN_PAGE;
                 }
             }

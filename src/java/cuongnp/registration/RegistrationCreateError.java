@@ -10,7 +10,8 @@ import java.io.Serializable;
  *
  * @author Cuong
  */
-public class RegistrationCreateError implements Serializable{
+public class RegistrationCreateError implements Serializable {
+
     private String usernameLengthErr;
     private String passwordLengthErr;
     private String fullnameLengthErr;
@@ -59,5 +60,5 @@ public class RegistrationCreateError implements Serializable{
     public void setUsernameIsExisted(String usernameIsExisted) {
         this.usernameIsExisted = usernameIsExisted;
     }
-    
+
 }

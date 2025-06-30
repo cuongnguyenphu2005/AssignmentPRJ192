@@ -25,8 +25,8 @@ import java.util.List;
 public class SearchLastNameServlet extends HttpServlet {
 
 //    private final String SEARCH_PAGE = "search.html";
-  private final String SEARCH_PAGE = "search.jsp";
-    
+    private final String SEARCH_PAGE = "search.jsp";
+
     private final String SEARCH_RESULT = "search.jsp";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -44,7 +44,7 @@ public class SearchLastNameServlet extends HttpServlet {
                 dao.searchLastName(searchValue); // ko tra tri
                 //3. Process
                 List<RegistrationDTO> result = dao.getAccounts();
-                
+
                 //dua result vao trang jsp. dat vao vung nho trung gian (o container) Scope va co thang toi lay
                 //trang dong vi gia tri tim kiem khac nhau thi se ra ket qua khac nhau.
                 //dung request scope, bang para va atribute. 
@@ -54,7 +54,6 @@ public class SearchLastNameServlet extends HttpServlet {
                 //
                 url = SEARCH_RESULT;
                 request.setAttribute("SEARCH_RESULT", result);
-                
 
             }
 
@@ -71,6 +70,7 @@ public class SearchLastNameServlet extends HttpServlet {
     }
 //di den view 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+
     /**
      * Handles the HTTP <code>GET</code> method.
      *

@@ -10,7 +10,8 @@ import java.io.Serializable;
  *
  * @author Cuong
  */
-public class RegistrationDTO implements Serializable{
+public class RegistrationDTO implements Serializable {
+
     private String username;
     private String password;
     private String lastName;
@@ -57,7 +58,5 @@ public class RegistrationDTO implements Serializable{
     public void setIsAdmin(boolean isAdmin) {
         this.isAdmin = isAdmin;
     }
-    
-    
-    
+
 }
