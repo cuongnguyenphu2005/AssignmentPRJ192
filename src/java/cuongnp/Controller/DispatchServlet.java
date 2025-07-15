@@ -24,14 +24,19 @@ import jakarta.servlet.http.HttpServletResponse;
 public class DispatchServlet extends HttpServlet {
 
     private final String LOGIN_PAGE = "login.html";
-//   private final String SEARCH_PAGE = "search.html";
-    private final String LOGIN_CONTROLLER = "LoginServlet";
 
+    private final String LOGIN_CONTROLLER = "LoginServlet";
     private final String SEARCH_LASTNAME_CONTROLLER = "SearchLastNameServlet";
     private final String DELETE_ACCOUNT_CONTROLLER = "DeleteAccountServlet";
-    private final String REGISTER_ACCOUNT_CONTROLLER = "CreateAccountSevlet";
-    private final String LOGOUT_ACCOUNT_CONTROLLER = "LogoutServlet";
+    private final String REGISTER_ACCOUNT_CONTROLLER = "CreateAccountServlet";
+    private final String LOGOUT_ACCOUNT_CONTROLLER = "LogOutServlet";
     private final String UPDATE_ACCOUNT_CONTROLLER = "UpdateServlet";
+    private final String SEARCH_BOOK_CONTROLLER = "SearchBookServlet";
+    private final String ADD_TO_CART_BOOK_CONTROLLER = "AddBookToCartServlet";
+    private final String DELETE_ITEM_CART_CONTROLLER = "RemoveItemServlet";
+    private final String TAKE_BOOK_DETAIL_CONTROLLER = "TakeBookDetailServlet";
+    private final String SEARCH_BOOK_ADMIN_CONTROLLER = "SearchBookAdminServlet";
+    private final String CHECK_OUT_CART_CONTROLLER = "CheckOutServlet";
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -66,11 +71,29 @@ public class DispatchServlet extends HttpServlet {
                     case "Update":
                         url = UPDATE_ACCOUNT_CONTROLLER;
                         break;
-                    case "Logout":
+                    case "Log out":
                         url = LOGOUT_ACCOUNT_CONTROLLER;
                         break;
                     case "Sign up":
                         url = REGISTER_ACCOUNT_CONTROLLER;
+                        break;
+                    case "Search book":
+                        url = SEARCH_BOOK_CONTROLLER;
+                        break;
+                    case "Add to card":
+                        url = ADD_TO_CART_BOOK_CONTROLLER;
+                        break;
+                    case "Remove item(s)":
+                        url = DELETE_ITEM_CART_CONTROLLER;
+                        break;
+                    case "Take book detail":
+                        url = TAKE_BOOK_DETAIL_CONTROLLER;
+                        break;
+                    case "Find book":
+                        url = SEARCH_BOOK_ADMIN_CONTROLLER;
+                        break;
+                    case "Check Out":
+                        url = CHECK_OUT_CART_CONTROLLER;
                         break;
                     default:
                     //do nothing

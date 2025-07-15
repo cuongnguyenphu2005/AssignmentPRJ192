@@ -51,5 +51,6 @@
             <input type="submit" value="Sign up" name="btAction" />
             <input type="reset" value="Reset" />
         </form>
+        <a href="login.html">Back to login page</a><br/>
     </body>
 </html>
