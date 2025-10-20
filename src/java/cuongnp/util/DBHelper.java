@@ -29,7 +29,7 @@ public class DBHelper {//static de khoi phai new
         //jdbc:sqlserver://ip:port;databaseName=...
         String url = "jdbc:sqlserver://"
                 + "localhost:1433;"
-                + "databaseName=dbo.PRJSE1819";
+                + "databaseName=PRJSE1819";
         //phai ghi chinh xac in hoa in thuong
         //dbms ko co chuan chung, nen phai chi chinh xac DbMS minh dang xai nao
         //3. Open connection using DriverManager
